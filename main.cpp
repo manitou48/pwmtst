@@ -4,7 +4,7 @@
 #define PRREG(z) printf(#z" 0x%x\n",z)
 
 #if 0
-PwmOut pwm(D6);
+PwmOut pwm(D6), led(LED2);
 
 int main()
 {
@@ -26,11 +26,12 @@ int main()
     PRREG(TIM1->PSC);
     PRREG(TIM1->ARR);
     PRREG(TIM1->CCR1);
-    
+    led.period(2.0);
+    led.write(0.5);
     while (1);         // led flashing
 }
 #else
-PwmOut pwm(D13), led(LED2);
+PwmOut pwm(D13), led(LED3);
 
 int main()
 {
